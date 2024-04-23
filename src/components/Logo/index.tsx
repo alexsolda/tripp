@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 const Logo = (): ReactElement => {
   return (
-    <div className="w-12 aspect-video relative">
+    <div className="w-14 aspect-video relative">
       <Image
         src={logoIMG}
         alt="Logo por extenso escrito: Tripp"

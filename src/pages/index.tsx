@@ -6,7 +6,19 @@ export default function Home() {
   return (
     <main className="h-screen w-screen">
       <Header />
-      <MapContent />
+      <MapContent
+        places={[
+          {
+            id: '2',
+            name: 'Daschund',
+            slug: 'ds',
+            location: {
+              lat: -25,
+              log: -49
+            }
+          }
+        ]}
+      />
     </main>
   )
 }

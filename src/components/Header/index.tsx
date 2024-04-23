@@ -4,7 +4,7 @@ import Logo from '../Logo'
 const Header = (): ReactElement => {
   return (
     <section>
-      <header className="h-20 w-full bg-black-600">
+      <header className="h-16 w-full bg-black-800">
         <div className="w-userView m-auto h-full flex items-center">
           <Logo />
         </div>

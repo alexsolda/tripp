@@ -1,9 +1,23 @@
 import { ReactElement } from 'react'
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+import { MapContainer, TileLayer, Marker } from 'react-leaflet'
 
-const MapContent = (): ReactElement => {
+type Place = {
+  id: string
+  name: string
+  slug: string
+  location: {
+    lat: number
+    log: number
+  }
+}
+
+type MapContentProps = {
+  places?: Place[]
+}
+
+const MapContent = ({ places }: MapContentProps): ReactElement => {
   return (
-    <section className="w-full h-[calc(100vh-5.5rem)] bg-red-500">
+    <section className="w-full h-[calc(100vh-4.5rem)] bg-red-500">
       <MapContainer
         center={[0, 0]}
         zoom={3}
@@ -13,11 +27,12 @@ const MapContent = (): ReactElement => {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={[0, 0]}>
-          <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
-          </Popup>
-        </Marker>
+        {places?.map(({ id, name, location }) => {
+          const { lat, log } = location
+          return (
+            <Marker key={`place-${id}`} position={[lat, log]} title={name} />
+          )
+        })}
       </MapContainer>
     </section>
   )
