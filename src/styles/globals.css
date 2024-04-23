@@ -3,9 +3,13 @@
 @tailwind utilities;
 
 * {
-  @apply transition-colors duration-200;
+  @apply transition-colors duration-75;
 }
 
 html, body {
   height: 100%;
+  font-family: 'Amaranth';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
 }
