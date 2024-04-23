@@ -10,7 +10,11 @@ module.exports = {
         black: {
           600: '#333333',
           800: '#131313'
-        }
+        },
+        white: '#ABABAB'
+      },
+      maxWidth: {
+        userView: '81.25rem'
       },
       width: {
         userView: '81.25rem'
