@@ -3,6 +3,14 @@ import Head from 'next/head'
 
 import '../styles/globals.css'
 
+import { Amaranth } from 'next/font/google'
+
+const amaranth = Amaranth({
+  subsets: ['latin'],
+  variable: '--font-amaranth',
+  weight: '400'
+})
+
 function App({ Component, pageProps }: AppProps) {
   return (
     <>
@@ -23,7 +31,9 @@ function App({ Component, pageProps }: AppProps) {
           crossOrigin=""
         />
       </Head>
-      <Component {...pageProps} />
+      <main className={`${amaranth.variable} font-sans`}>
+        <Component {...pageProps} />
+      </main>
     </>
   )
 }

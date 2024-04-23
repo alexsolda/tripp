@@ -2,15 +2,23 @@ import { ReactElement } from 'react'
 import logoIMG from '/public/img/tripp_logo.png'
 import Image from 'next/image'
 
-const Logo = (): ReactElement => {
+type LogoProps = {
+  size: 'sm' | 'lg'
+}
+
+const Logo = ({ size }: LogoProps): ReactElement => {
   return (
-    <div className="w-14 aspect-video relative">
+    <div
+      className={`${
+        size === 'sm' ? 'w-14' : 'w-44 lg:w-60'
+      } aspect-video relative`}
+    >
       <Image
         src={logoIMG}
         alt="Logo por extenso escrito: Tripp"
         sizes="50vw"
-        objectFit="cover"
-        layout="fill"
+        style={{ objectFit: 'contain' }}
+        fill
         priority
       />
     </div>

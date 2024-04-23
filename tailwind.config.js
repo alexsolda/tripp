@@ -4,6 +4,9 @@ module.exports = {
   darkMode: 'class',
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['var(--font-amaranth)']
+      },
       colors: {
         primary: '#00758E',
         secondary: '#00633F',

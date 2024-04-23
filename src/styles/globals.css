@@ -8,4 +8,8 @@
 
 html, body {
   height: 100%;
+  font-family: 'Amaranth';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
 }
