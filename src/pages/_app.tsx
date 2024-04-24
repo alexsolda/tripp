@@ -8,7 +8,7 @@ import { Amaranth } from 'next/font/google'
 const amaranth = Amaranth({
   subsets: ['latin'],
   variable: '--font-amaranth',
-  weight: '400'
+  weight: ['400', '700']
 })
 
 function App({ Component, pageProps }: AppProps) {
@@ -31,7 +31,7 @@ function App({ Component, pageProps }: AppProps) {
           crossOrigin=""
         />
       </Head>
-      <main className={`${amaranth.variable} font-sans`}>
+      <main className={`${amaranth.variable} font-sans bg-black-800 min-h-screen`}>
         <Component {...pageProps} />
       </main>
     </>
