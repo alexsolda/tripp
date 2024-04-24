@@ -3,10 +3,14 @@ import LinkWrapper from 'components/LinkWrapper'
 import Logo from 'components/Logo'
 import StyledBar from 'components/StyledBar'
 import { ReactElement } from 'react'
-import { RiCloseCircleFill, RiLinkedinBoxFill } from 'react-icons/ri'
 import { BiLogoGithub } from 'react-icons/bi'
+import { RiCloseCircleFill, RiLinkedinBoxFill } from 'react-icons/ri'
 
-const About = (): ReactElement => {
+export type PageTemplateProps = {
+  body: string
+}
+
+const PageTemplate = ({ body }: PageTemplateProps): ReactElement => {
   return (
     <main className="w-full h-full">
       <section className="bg-black-800 h-[calc(100vh-0.5rem)]">
@@ -18,14 +22,10 @@ const About = (): ReactElement => {
         <ContentWrapper className="flex flex-col items-center mt-10 gap-8">
           <>
             <Logo size="lg" />
-            <p className="text-white text-center">
-              Tripp é um sistema desenvolvido com a proposta de{' '}
-              <q>diário de viagens</q>, onde o usuário poderá cadastrar
-              informações relevantes dos lugares visitados.
-            </p>
-            <p className="text-white text-center">
-              Desenvolvido por: <b>Alex Solda</b>
-            </p>
+            <div
+              className="text-white text-center"
+              dangerouslySetInnerHTML={{ __html: body }}
+            />
             <div className="flex justify-center items-center gap-4">
               <LinkWrapper href="/">
                 <RiLinkedinBoxFill size={30} />
@@ -42,4 +42,4 @@ const About = (): ReactElement => {
   )
 }
 
-export default About
+export default PageTemplate

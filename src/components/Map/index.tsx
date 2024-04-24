@@ -6,12 +6,12 @@ type Place = {
   name: string
   slug: string
   location: {
-    lat: number
-    log: number
+    latitude: number
+    longitude: number
   }
 }
 
-type MapContentProps = {
+export type MapContentProps = {
   places?: Place[]
 }
 
@@ -28,9 +28,13 @@ const MapContent = ({ places }: MapContentProps): ReactElement => {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         {places?.map(({ id, name, location }) => {
-          const { lat, log } = location
+          const { latitude, longitude } = location
           return (
-            <Marker key={`place-${id}`} position={[lat, log]} title={name} />
+            <Marker
+              key={`place-${id}`}
+              position={[latitude, longitude]}
+              title={name}
+            />
           )
         })}
       </MapContainer>
