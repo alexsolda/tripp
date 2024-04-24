@@ -1,24 +1,20 @@
-import Header from 'components/Header'
-import dynamic from 'next/dynamic'
-const MapContent = dynamic(() => import('components/Map'), { ssr: false })
+import { MapContentProps } from 'components/Map'
+import client from 'graphql/client'
+import { GetPlacesQuery } from 'graphql/generated/graphql'
+import { GET_PLACES } from 'graphql/queries'
+import { ReactElement } from 'react'
+import HomeTemplate from 'templates/Home'
 
-export default function Home() {
-  return (
-    <main className="h-screen w-screen">
-      <Header />
-      <MapContent
-        places={[
-          {
-            id: '2',
-            name: 'Daschund',
-            slug: 'ds',
-            location: {
-              lat: -25,
-              log: -49
-            }
-          }
-        ]}
-      />
-    </main>
-  )
+const Home = ({ places }: MapContentProps): ReactElement => {
+  return <HomeTemplate places={places} />
+}
+
+export default Home
+
+export const getStaticProps = async () => {
+  const { places } = await client.request<GetPlacesQuery>(GET_PLACES)
+
+  return {
+    props: { places }
+  }
 }
