@@ -27,7 +27,10 @@ const PageTemplate = ({ body }: PageTemplateProps): ReactElement => {
               dangerouslySetInnerHTML={{ __html: body }}
             />
             <div className="flex justify-center items-center gap-4">
-              <LinkWrapper href="/">
+              <LinkWrapper
+                external
+                href="https://www.linkedin.com/in/alexsolda/"
+              >
                 <RiLinkedinBoxFill size={30} />
               </LinkWrapper>
               <LinkWrapper external href="https://github.com/alexsolda">

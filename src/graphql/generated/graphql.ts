@@ -31,6 +31,7 @@ export type Aggregate = {
 /** Asset system model */
 export type Asset = Entity & Node & {
   __typename?: 'Asset';
+  coverPlace: Array<Place>;
   /** The time the document was created */
   createdAt: Scalars['DateTime']['output'];
   /** User that created this document */
@@ -73,6 +74,20 @@ export type Asset = Entity & Node & {
   url: Scalars['String']['output'];
   /** The file width */
   width?: Maybe<Scalars['Float']['output']>;
+};
+
+
+/** Asset system model */
+export type AssetCoverPlaceArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  locales?: InputMaybe<Array<Locale>>;
+  orderBy?: InputMaybe<PlaceOrderByInput>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<PlaceWhereInput>;
 };
 
 
@@ -188,6 +203,7 @@ export type AssetConnection = {
 };
 
 export type AssetCreateInput = {
+  coverPlace?: InputMaybe<PlaceCreateManyInlineInput>;
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
   fileName?: InputMaybe<Scalars['String']['input']>;
   galleryPlace?: InputMaybe<PlaceCreateManyInlineInput>;
@@ -250,6 +266,9 @@ export type AssetManyWhereInput = {
   OR?: InputMaybe<Array<AssetWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']['input']>;
+  coverPlace_every?: InputMaybe<PlaceWhereInput>;
+  coverPlace_none?: InputMaybe<PlaceWhereInput>;
+  coverPlace_some?: InputMaybe<PlaceWhereInput>;
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
   /** All values greater than the given value. */
   createdAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
@@ -372,6 +391,7 @@ export type AssetTransformationInput = {
 };
 
 export type AssetUpdateInput = {
+  coverPlace?: InputMaybe<PlaceUpdateManyInlineInput>;
   fileName?: InputMaybe<Scalars['String']['input']>;
   galleryPlace?: InputMaybe<PlaceUpdateManyInlineInput>;
   /** Manage document localizations */
@@ -628,6 +648,9 @@ export type AssetWhereInput = {
   OR?: InputMaybe<Array<AssetWhereInput>>;
   /** Contains search across all appropriate fields. */
   _search?: InputMaybe<Scalars['String']['input']>;
+  coverPlace_every?: InputMaybe<PlaceWhereInput>;
+  coverPlace_none?: InputMaybe<PlaceWhereInput>;
+  coverPlace_some?: InputMaybe<PlaceWhereInput>;
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
   /** All values greater than the given value. */
   createdAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
@@ -2095,6 +2118,7 @@ export type PageWhereUniqueInput = {
 export type Place = Entity & Node & {
   __typename?: 'Place';
   arrivalDate: Scalars['Date']['output'];
+  cover: Asset;
   /** The time the document was created */
   createdAt: Scalars['DateTime']['output'];
   /** User that created this document */
@@ -2121,6 +2145,13 @@ export type Place = Entity & Node & {
   updatedAt: Scalars['DateTime']['output'];
   /** User that last updated this document */
   updatedBy?: Maybe<User>;
+};
+
+
+export type PlaceCoverArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']['input']>;
+  locales?: InputMaybe<Array<Locale>>;
+  where?: InputMaybe<AssetSingleRelationWhereInput>;
 };
 
 
@@ -2199,6 +2230,7 @@ export type PlaceConnection = {
 
 export type PlaceCreateInput = {
   arrivalDate: Scalars['Date']['input'];
+  cover: AssetCreateOneInlineInput;
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
   description?: InputMaybe<Scalars['RichTextAST']['input']>;
   gallery?: InputMaybe<AssetCreateManyInlineInput>;
@@ -2256,6 +2288,7 @@ export type PlaceManyWhereInput = {
   arrivalDate_not?: InputMaybe<Scalars['Date']['input']>;
   /** All values that are not contained in given list. */
   arrivalDate_not_in?: InputMaybe<Array<InputMaybe<Scalars['Date']['input']>>>;
+  cover?: InputMaybe<AssetWhereInput>;
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
   /** All values greater than the given value. */
   createdAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
@@ -2391,6 +2424,7 @@ export enum PlaceOrderByInput {
 
 export type PlaceUpdateInput = {
   arrivalDate?: InputMaybe<Scalars['Date']['input']>;
+  cover?: InputMaybe<AssetUpdateOneInlineInput>;
   description?: InputMaybe<Scalars['RichTextAST']['input']>;
   gallery?: InputMaybe<AssetUpdateManyInlineInput>;
   location?: InputMaybe<LocationInput>;
@@ -2495,6 +2529,7 @@ export type PlaceWhereInput = {
   arrivalDate_not?: InputMaybe<Scalars['Date']['input']>;
   /** All values that are not contained in given list. */
   arrivalDate_not_in?: InputMaybe<Array<InputMaybe<Scalars['Date']['input']>>>;
+  cover?: InputMaybe<AssetWhereInput>;
   createdAt?: InputMaybe<Scalars['DateTime']['input']>;
   /** All values greater than the given value. */
   createdAt_gt?: InputMaybe<Scalars['DateTime']['input']>;
@@ -4472,12 +4507,12 @@ export enum _SystemDateTimeFieldVariation {
   Localization = 'localization'
 }
 
-export type PagesQueryVariables = Exact<{
+export type GetPagesQueryVariables = Exact<{
   first?: InputMaybe<Scalars['Int']['input']>;
 }>;
 
 
-export type PagesQuery = { __typename?: 'Query', pages: Array<{ __typename?: 'Page', about: string, id: string, slug: string, body: { __typename?: 'RichText', html: string } }> };
+export type GetPagesQuery = { __typename?: 'Query', pages: Array<{ __typename?: 'Page', about: string, id: string, slug: string, body: { __typename?: 'RichText', html: string } }> };
 
 export type GetPageBySlugQueryVariables = Exact<{
   slug: Scalars['String']['input'];
@@ -4486,7 +4521,16 @@ export type GetPageBySlugQueryVariables = Exact<{
 
 export type GetPageBySlugQuery = { __typename?: 'Query', page?: { __typename?: 'Page', id: string, about: string, slug: string, body: { __typename?: 'RichText', html: string } } | null };
 
-export type GetPlacesQueryVariables = Exact<{ [key: string]: never; }>;
+export type GetPlacesQueryVariables = Exact<{
+  first?: InputMaybe<Scalars['Int']['input']>;
+}>;
 
 
-export type GetPlacesQuery = { __typename?: 'Query', places: Array<{ __typename?: 'Place', id: string, name: string, slug: string, arrivalDate: any, description?: { __typename?: 'RichText', html: string } | null, location: { __typename?: 'Location', latitude: number, longitude: number }, gallery: Array<{ __typename?: 'Asset', id: string, url: string }> }> };
+export type GetPlacesQuery = { __typename?: 'Query', places: Array<{ __typename?: 'Place', id: string, name: string, slug: string, arrivalDate: any, description?: { __typename?: 'RichText', html: string } | null, location: { __typename?: 'Location', latitude: number, longitude: number }, cover: { __typename?: 'Asset', url: string }, gallery: Array<{ __typename?: 'Asset', id: string, url: string }> }> };
+
+export type GetPlaceBySlugQueryVariables = Exact<{
+  slug?: InputMaybe<Scalars['String']['input']>;
+}>;
+
+
+export type GetPlaceBySlugQuery = { __typename?: 'Query', place?: { __typename?: 'Place', id: string, name: string, slug: string, arrivalDate: any, description?: { __typename?: 'RichText', html: string, text: string } | null, location: { __typename?: 'Location', latitude: number, longitude: number }, cover: { __typename?: 'Asset', url: string }, gallery: Array<{ __typename?: 'Asset', id: string, url: string }> } | null };

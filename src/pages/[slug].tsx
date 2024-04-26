@@ -4,7 +4,7 @@ import { GET_PAGES, GET_PAGE_BY_SLUG } from 'graphql/queries'
 import PageTemplate, { PageTemplateProps } from 'templates/Pages'
 import { useRouter } from 'next/router'
 import { GetStaticProps } from 'next'
-import { GetPageBySlugQuery, PagesQuery } from 'graphql/generated/graphql'
+import { GetPageBySlugQuery, GetPagesQuery } from 'graphql/generated/graphql'
 
 const Pages = ({ body }: PageTemplateProps): ReactElement => {
   const router = useRouter()
@@ -16,7 +16,7 @@ const Pages = ({ body }: PageTemplateProps): ReactElement => {
 export default Pages
 
 export const getStaticPaths = async () => {
-  const slugs = await client.request<PagesQuery>(GET_PAGES, { first: 3 })
+  const slugs = await client.request<GetPagesQuery>(GET_PAGES, { first: 3 })
   const { pages } = slugs
 
   const paths = pages.map(({ slug }) => ({ params: { slug } }))
@@ -32,6 +32,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   if (!page) return { notFound: true }
 
   return {
+    revalidate: 5,
     props: {
       body: page.body.html
     }
