@@ -31,7 +31,9 @@ function App({ Component, pageProps }: AppProps) {
           crossOrigin=""
         />
       </Head>
-      <main className={`${amaranth.variable} font-sans bg-black-800 min-h-screen`}>
+      <main
+        className={`${amaranth.variable} font-sans bg-black-800 min-h-screen`}
+      >
         <Component {...pageProps} />
       </main>
     </>

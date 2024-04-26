@@ -27,28 +27,28 @@ export const GET_PAGE_BY_SLUG = gql`
 `
 
 export const GET_PLACES = gql`
-query getPlaces($first: Int) {
-  places(first: $first) {
-    id
-    name
-    description {
-      html
-    }
-    slug
-    arrivalDate
-    location {
-      latitude
-      longitude
-    }
-  cover {
-    url
-  }
-    gallery {
+  query getPlaces($first: Int) {
+    places(first: $first) {
       id
-      url
+      name
+      description {
+        html
+      }
+      slug
+      arrivalDate
+      location {
+        latitude
+        longitude
+      }
+      cover {
+        url
+      }
+      gallery {
+        id
+        url
+      }
     }
   }
-}
 `
 
 export const GET_PLACE_BY_SLUG = gql`

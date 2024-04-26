@@ -1,6 +1,9 @@
 import ContentWrapper from 'components/ContentWrapper'
+import LinkWrapper from 'components/LinkWrapper'
 import StyledBar from 'components/StyledBar'
+import { useRouter } from 'next/router'
 import { ReactElement } from 'react'
+import { RiCloseCircleFill } from 'react-icons/ri'
 import { dateInFull } from 'utils/dateFormatters'
 
 type ImageProps = {
@@ -21,25 +24,44 @@ export type PlacesTemplateProps = {
 }
 
 const PlacesTemplate = ({ place }: PlacesTemplateProps): ReactElement => {
+  const router = useRouter()
+
+  if (router.isFallback) return <>ué</>
+
   return (
-    <section className='min-h-screen max-h-screen flex flex-col'>
+    <section className="min-h-screen flex flex-col">
+      <StyledBar />
       <div
-      style={{backgroundImage: `url(${place.cover.url})`}}
-      className='flex flex-col justify-end h-48 bg-red-500 bg-center bg-no-repeat opacity-80'>
-        <div className='bg-gradient-to-t from-black-800 h-10' />
+        style={{ backgroundImage: `url(${place.cover.url})` }}
+        className="flex flex-col justify-end h-80 bg-center bg-no-repeat opacity-80"
+      >
+        <div className="bg-gradient-to-t from-black-800 h-10" />
       </div>
       <article>
-      <ContentWrapper>
-        <div className='mt-10 flex flex-col'>
-        <p className='text-secondary text-2xl font-bold'>{place.name}</p>
-        <p className='text-secondary'>{dateInFull(place.arrivalDate)}</p>
-        <div className='grow overflow-y-auto'>
-        <div className='text-white text-justify mt-10' dangerouslySetInnerHTML={{__html: place.description.html}}/>
-        </div>
-        </div>
-      </ContentWrapper>
+        <ContentWrapper>
+          <div className="mt-10 flex flex-col">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-secondary text-2xl font-bold">
+                  {place.name}
+                </p>
+                <p className="text-secondary">
+                  {dateInFull(place.arrivalDate)}
+                </p>
+              </div>
+              <LinkWrapper href="/">
+                <RiCloseCircleFill size={30} />
+              </LinkWrapper>
+            </div>
+            <div className="grow overflow-y-auto">
+              <div
+                className="text-white text-justify my-10"
+                dangerouslySetInnerHTML={{ __html: place.description.html }}
+              />
+            </div>
+          </div>
+        </ContentWrapper>
       </article>
-      <StyledBar />
     </section>
   )
 }
