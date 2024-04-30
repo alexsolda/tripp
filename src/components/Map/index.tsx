@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router'
 import { ReactElement } from 'react'
 import { MapContainer, TileLayer, Marker } from 'react-leaflet'
+import L from 'leaflet'
 
 type Place = {
   id: string
@@ -37,11 +38,30 @@ const MapContent = ({ places }: MapContentProps): ReactElement => {
     )
   }
 
+  const markerIcon = new L.Icon({
+    iconUrl: 'img/location-icon.png',
+    iconSize: [30, 35],
+    iconAnchor: [20, 40],
+    popupAnchor: [0, -40]
+  })
+
+  const minZoom =
+    (window.innerWidth ||
+      document.documentElement.clientWidth ||
+      document.body.clientWidth) < 768
+      ? 2
+      : 3
+
   return (
     <section className="w-full h-[calc(100vh-4.5rem)] bg-black-800">
       <MapContainer
         center={[0, 0]}
-        zoom={3}
+        zoom={minZoom}
+        minZoom={minZoom}
+        maxBounds={[
+          [-180, 180],
+          [180, -180]
+        ]}
         style={{ height: '100%', width: '100%' }}
       >
         <CustomTailLayer />
@@ -52,6 +72,7 @@ const MapContent = ({ places }: MapContentProps): ReactElement => {
               key={`place-${id}`}
               position={[latitude, longitude]}
               title={name}
+              icon={markerIcon}
               eventHandlers={{
                 click: () => {
                   router.push(`/place/${slug}`)

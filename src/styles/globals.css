@@ -13,3 +13,7 @@ html, body {
   font-weight: 400;
   font-display: swap;
 }
+
+.leaflet-container {
+  background-color: #00758E;
+}
