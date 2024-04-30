@@ -57,7 +57,7 @@
     "prettier": "^2.4.1",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.4.5",
-    "typescript-eslint": "^7.7.1",
+    "typescript-eslint": "^7.8.0",
     "webpack": "5.68.0"
   },
   "description": "A simple project to show places that i've been."
