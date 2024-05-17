@@ -40,7 +40,7 @@ const PageTemplate = ({ body }: PageTemplateProps): ReactElement => {
           </>
         </ContentWrapper>
       </section>
-      <StyledBar />
+      <StyledBar fixed />
     </main>
   )
 }

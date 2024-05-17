@@ -49,7 +49,7 @@ const PlacesTemplate = ({ place }: PlacesTemplateProps): ReactElement => {
         }}
       />
       <section className="min-h-screen flex flex-col">
-        <StyledBar />
+        <StyledBar fixed />
         <div
           style={{ backgroundImage: `url(${place.cover.url})` }}
           className="flex flex-col justify-end h-80 bg-center bg-no-repeat opacity-80"
