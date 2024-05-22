@@ -5,6 +5,7 @@ import { RiInformation2Fill } from 'react-icons/ri'
 import StyledBar from 'components/StyledBar'
 import ContentWrapper from 'components/ContentWrapper'
 import dynamic from 'next/dynamic'
+import TooltipContainer from 'components/TooltipContainer'
 
 const DropdownView = dynamic(() => import('components/Dropdown/DropdownView'), {
   ssr: false
@@ -18,7 +19,11 @@ const Header = (): ReactElement => {
           <>
             <Logo size="sm" />
             <div className="flex items-center gap-4">
-              <DropdownView />
+              <TooltipContainer text="Alterar visualização">
+                <div>
+                  <DropdownView />
+                </div>
+              </TooltipContainer>
               <LinkWrapper href="/about">
                 <RiInformation2Fill size={30} aria-label="About" />
               </LinkWrapper>

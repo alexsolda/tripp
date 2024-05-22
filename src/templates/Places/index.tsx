@@ -58,7 +58,7 @@ const PlacesTemplate = ({ place }: PlacesTemplateProps): ReactElement => {
         </div>
         <article>
           <ContentWrapper>
-            <div className="mt-10 flex flex-col">
+            <div className="mt-10 flex flex-col m-auto md:w-readView">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-secondary text-2xl font-bold">
@@ -74,7 +74,7 @@ const PlacesTemplate = ({ place }: PlacesTemplateProps): ReactElement => {
               </div>
               <div className="grow overflow-y-auto">
                 <div
-                  className="text-white text-justify my-10"
+                  className="text-white text-justify my-10 rich-text"
                   dangerouslySetInnerHTML={{ __html: place.description.html }}
                 />
               </div>

@@ -15,7 +15,7 @@ export const ViewOptionsData: IViewOptionsInfos[] = [
     value: 'map'
   },
   {
-    label: 'Lista',
+    label: 'Lista (em breve)',
     value: 'list'
   }
 ]

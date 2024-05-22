@@ -3,11 +3,11 @@ export default {
     type: 'website',
     locale: 'en_US',
     url: 'https://www.url.ie/',
-    siteName: 'Tripp',
+    siteName: 'Tripp'
   },
   twitter: {
     handle: '@handle',
     site: '@site',
-    cardType: 'summary_large_image',
-  },
-};
+    cardType: 'summary_large_image'
+  }
+}

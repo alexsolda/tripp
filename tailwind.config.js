@@ -22,10 +22,12 @@ module.exports = {
         white: '#ABABAB'
       },
       maxWidth: {
-        userView: '81.25rem'
+        userView: '81.25rem',
+        readView: '42.5rem'
       },
       width: {
-        userView: '81.25rem'
+        userView: '81.25rem',
+        readView: '42.5rem'
       }
     }
   },

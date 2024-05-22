@@ -6,12 +6,9 @@ import {
   DropdownItem
 } from '@nextui-org/react'
 import { ViewOptionsData } from 'utils/enumInfos'
-import { useViewOptions } from 'context/viewOptions'
 import { FaListAlt, FaMapMarkedAlt } from 'react-icons/fa'
 
 const DropdownView = (): ReactElement => {
-  const { viewType, handleViewType } = useViewOptions()
-
   return (
     <Dropdown
       showArrow
@@ -22,11 +19,14 @@ const DropdownView = (): ReactElement => {
     >
       <DropdownTrigger>
         <div className="text-white cursor-pointer hover:text-secondary focus:text-secondary">
-          {viewType === 'map' ? (
+          {/* TODO */}
+
+          {/* {viewType === 'map' ? (
             <FaMapMarkedAlt size={25} />
           ) : (
             <FaListAlt size={25} />
-          )}
+          )} */}
+          <FaMapMarkedAlt size={25} />
         </div>
       </DropdownTrigger>
       <DropdownMenu
@@ -34,13 +34,13 @@ const DropdownView = (): ReactElement => {
         variant="flat"
         disallowEmptySelection
         selectionMode="single"
-        selectedKeys={[viewType]}
+        selectedKeys={['map']}
         className="group"
       >
         {ViewOptionsData.map((item) => (
           <DropdownItem
             key={item.value}
-            onPress={() => handleViewType(item.value)}
+            className={`${item.value === 'list' && 'cursor-not-allowed'}`}
             startContent={
               item.value === 'map' ? (
                 <FaMapMarkedAlt size={20} />
