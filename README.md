@@ -22,7 +22,7 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 [Graphql](https://graphql.org/).
 [Hygraph](https://hygraph.com/).
 
-## 📫 Contribuindo para <nome_do_projeto>
+## 📫 Contribuindo para <Tripp>
 
 Para contribuir com <nome_do_projeto>, siga estas etapas:
 
