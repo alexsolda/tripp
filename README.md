@@ -1,4 +1,4 @@
-# Nome do projeto
+# Tripp
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/alexsolda/tripp?style=for-the-badge)
 ![GitHub language count](https://img.shields.io/github/languages/count/alexsolda/tripp?style=for-the-badge)
