@@ -1,58 +1,28 @@
+# Tripp
 
-![React Avançado](https://raw.githubusercontent.com/React-Avancado/boilerplate/master/public/img/logo-gh.svg)
+![GitHub repo size](https://img.shields.io/github/repo-size/alexsolda/tripp?style=for-the-badge)
+![GitHub language count](https://img.shields.io/github/languages/count/alexsolda/tripp?style=for-the-badge)
+![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/alexsolda/tripp?style=for-the-badge)
 
-This is a [Next.js](https://nextjs.org/) boilerplate to be used in a course called [React Avançado](https://reactavancado.com.br/).
-![ci](https://github.com/React-Avancado/boilerplate/workflows/ci/badge.svg)
-## What is inside?
 
-This project uses lot of stuff as:
+> Projeto do tipo blog com conteúdo sobre viagem criado com a finalidade de treinar e reforçar alguns conceitos e tecnologias que venho me aperfeiçoando ao longo do anos.
 
-- [TypeScript](https://www.typescriptlang.org/)
-- [NextJS](https://nextjs.org/)
-- [Styled Components](https://styled-components.com/)
-- [Jest](https://jestjs.io/)
-- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
-- [Storybook](https://storybook.js.org/)
-- [Eslint](https://eslint.org/)
-- [Prettier](https://prettier.io/)
-- [Husky](https://github.com/typicode/husky)
+### Ajustes e melhorias
 
-## Getting Started
+O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas nas seguintes tarefas:
 
-First, run the development server:
+- [ ] Pequenas melhorias de layout (cores e disposição)
+- [ ] Possibilidade de alterar a visualização para lista
+- [ ] Novos conteúdos
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Tecnologias
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+[Next.js](https://nextjs.org/).
+[Tailwind](https://tailwindcss.com/).
+[Graphql](https://graphql.org/).
+[Hygraph](https://hygraph.com/).
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## 📝 Licença
 
-## Commands
+Esse projeto está sob licença. Veja o arquivo [LICENÇA](LICENSE.md) para mais detalhes.
 
-- `dev`: runs your application on `localhost:3000`
-- `build`: creates the production build version
-- `start`: starts a simple server with the build production code
-- `lint`: runs the linter in all components and pages
-- `test`: runs jest to test all components and pages
-- `test:watch`: runs jest in watch mode
-- `storybook`: runs storybook on `localhost:6006`
-- `build-storybook`: create the build version of storybook
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
