@@ -9,6 +9,9 @@ import '../styles/globals.css'
 
 import { Amaranth } from 'next/font/google'
 
+import { NextUIProvider } from '@nextui-org/react'
+import { ViewOptionsProvider } from 'context/viewOptions'
+
 const amaranth = Amaranth({
   subsets: ['latin'],
   variable: '--font-amaranth',
@@ -29,6 +32,7 @@ function App({ Component, pageProps }: AppProps) {
           integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
           crossOrigin=""
         />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
       </Head>
       <DefaultSeo {...SEO} />
       <main
@@ -41,7 +45,11 @@ function App({ Component, pageProps }: AppProps) {
           height={3}
           showOnShallow={true}
         />
-        <Component {...pageProps} />
+        <NextUIProvider>
+          <ViewOptionsProvider>
+            <Component {...pageProps} />
+          </ViewOptionsProvider>
+        </NextUIProvider>
       </main>
     </>
   )
