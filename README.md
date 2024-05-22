@@ -6,7 +6,8 @@
 
 
 > Projeto do tipo blog com conteúdo sobre viagem criado com a finalidade de treinar e reforçar alguns conceitos e tecnologias que venho me aperfeiçoando ao longo do anos.
-> [Acesso](https://tripp-blog.vercel.app/)
+
+[Acesso](https://tripp-blog.vercel.app/)
 
 ### Ajustes e melhorias
 
