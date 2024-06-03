@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@nextui-org/react": "^2.3.6",
-    "framer-motion": "^11.1.7",
+    "framer-motion": "^11.2.10",
     "graphql": "^16.8.1",
     "graphql-request": "^7.0.1",
     "leaflet": "^1.9.4",
